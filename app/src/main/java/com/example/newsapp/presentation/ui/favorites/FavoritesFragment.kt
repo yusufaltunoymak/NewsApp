@@ -1,12 +1,13 @@
-package com.example.newsapp.presentation.ui
+package com.example.newsapp.presentation.ui.favorites
 
 import android.os.Bundle
 import android.view.View
 import com.example.newsapp.base.BaseFragment
-import com.example.newsapp.databinding.FragmentNewsBinding
+import com.example.newsapp.databinding.FragmentFavoritesBinding
 
-class NewsFragment : BaseFragment<FragmentNewsBinding>(FragmentNewsBinding::inflate) {
+class FavoritesFragment : BaseFragment<FragmentFavoritesBinding>(FragmentFavoritesBinding::inflate) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
     }
 }
