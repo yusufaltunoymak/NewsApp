@@ -1,6 +1,8 @@
 package com.example.newsapp.domain.di
 
 import com.example.newsapp.data.remote.NewsAPI
+import com.example.newsapp.data.repository.NewsRepositoryImpl
+import com.example.newsapp.domain.repository.NewsRepository
 import com.example.newsapp.util.Constants
 import dagger.Module
 import dagger.Provides
@@ -37,4 +39,15 @@ object AppModule {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
         .create(NewsAPI::class.java)
+
+    @Module
+    @InstallIn(SingletonComponent::class)
+    object RepositoryModule {
+        @Provides
+        fun provideNewsRepository(): NewsRepository {
+            return NewsRepositoryImpl(provideApi(client = provideOkHttpClient(
+                provideHttpLoggerInterceptor()
+            )))
+        }
+    }
 }

@@ -44,7 +44,7 @@ android {
 }
 
 dependencies {
-
+    val paging_version = "3.2.1"
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -82,6 +82,19 @@ dependencies {
 
     //Lottie
     implementation("com.airbnb.android:lottie:5.2.0")
+
+    //Paging
+    implementation("androidx.paging:paging-runtime:$paging_version")
+
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
+    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
+    implementation ("androidx.lifecycle:lifecycle-common-java8:2.6.1")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.1")
+
+
+
+
 
 }
 kapt {

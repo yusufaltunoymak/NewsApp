@@ -7,8 +7,9 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.newsapp.R
 
-fun ImageView.downloadFromUrl(url: String?, context: Context) {
+fun ImageView.downloadFromUrl(url: String?, context: Context,placeholderResourceId : Int) {
     val options = RequestOptions()
+        .placeholder(placeholderResourceId)
         .error(ContextCompat.getDrawable(context, R.color.light_grey))
 
     Glide.with(context)
