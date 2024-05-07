@@ -5,5 +5,5 @@ import com.example.newsapp.data.model.Article
 import kotlinx.coroutines.flow.Flow
 
 interface NewsRepository {
-    suspend fun getNewsList(): Flow<PagingData<Article>>
+    suspend fun getNewsList(query : String): Flow<PagingData<Article>>
 }

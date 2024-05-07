@@ -7,7 +7,7 @@ import com.example.newsapp.data.model.Article
 import com.example.newsapp.data.remote.NewsAPI
 import javax.inject.Inject
 
-class NewsPagingDataSource@Inject constructor(private val api: NewsAPI) : PagingSource<Int, Article>() {
+class NewsPagingDataSource @Inject constructor(private val api: NewsAPI,private var query: String) : PagingSource<Int, Article>() {
     override fun getRefreshKey(state: PagingState<Int, Article>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
             state.closestPageToPosition(anchorPosition)?.prevKey?.plus(1)
@@ -18,7 +18,7 @@ class NewsPagingDataSource@Inject constructor(private val api: NewsAPI) : Paging
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Article> {
         val page = params.key ?: 1
         return try {
-            val response = api.getNewsList(query = "Fenerbahce", page = page, pageSize = params.loadSize)
+            val response = api.getNewsList(query = query, page = page, pageSize = params.loadSize)
             val articles = response.articles
 
             LoadResult.Page(

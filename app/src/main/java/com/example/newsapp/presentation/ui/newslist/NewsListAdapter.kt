@@ -11,7 +11,7 @@ import com.example.newsapp.databinding.ListRecyclerItemBinding
 import com.example.newsapp.util.cleanText
 import com.example.newsapp.util.downloadFromUrl
 
-class NewsListAdapter(private val context: Context) : PagingDataAdapter<Article, NewsListAdapter.ViewHolder>(NewsListCallBack()) {
+class NewsListAdapter(private val context: Context, private val onItemClicked : (Article) -> Unit) : PagingDataAdapter<Article, NewsListAdapter.ViewHolder>(NewsListCallBack()) {
 
     inner class ViewHolder(private val binding: ListRecyclerItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(article: Article?) {
@@ -21,8 +21,16 @@ class NewsListAdapter(private val context: Context) : PagingDataAdapter<Article,
                         newsPosterImage.downloadFromUrl(article.urlToImage, context, R.drawable.news_logo)
                         Glide.with(itemView.context).load(article.urlToImage).into(newsPosterImage)
                     }
+                    else {
+                        newsPosterImage.setImageResource(R.drawable.news_logo)
+
+                    }
                     newsHeaderText.text = article.title
                     newsContentText.text = cleanText(article.content)
+
+                    root.setOnClickListener {
+                        onItemClicked.invoke(article)
+                    }
                 }
             }
         }

@@ -11,12 +11,12 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class NewsRepositoryImpl @Inject constructor(private val api : NewsAPI) : NewsRepository {
-    override suspend fun getNewsList(): Flow<PagingData<Article>> {
+    override suspend fun getNewsList(query : String): Flow<PagingData<Article>> {
         return Pager(
             config = PagingConfig(
                 pageSize = NETWORK_PAGE_SIZE
             ),
-            pagingSourceFactory = {NewsPagingDataSource(api)}
+            pagingSourceFactory = {NewsPagingDataSource(api,query)}
         ).flow
     }
 
