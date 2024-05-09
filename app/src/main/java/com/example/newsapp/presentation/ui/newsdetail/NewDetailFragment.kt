@@ -1,14 +1,19 @@
 package com.example.newsapp.presentation.ui.newsdetail
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.newsapp.R
 import com.example.newsapp.base.BaseFragment
 import com.example.newsapp.databinding.FragmentNewDetailBinding
+import com.example.newsapp.presentation.ui.NewSourceFragment
 import com.example.newsapp.util.Constants
 import com.example.newsapp.util.cleanText
 import com.example.newsapp.util.downloadFromUrl
@@ -17,6 +22,7 @@ import java.time.format.DateTimeFormatter
 
 class NewDetailFragment : BaseFragment<FragmentNewDetailBinding>(FragmentNewDetailBinding::inflate) {
     private val args : NewDetailFragmentArgs by navArgs()
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -35,6 +41,10 @@ class NewDetailFragment : BaseFragment<FragmentNewDetailBinding>(FragmentNewDeta
             else {
                 newsImage.setImageResource(R.drawable.news_logo)
 
+            }
+
+            sourceLinkButton.setOnClickListener {
+                findNavController().navigate(NewDetailFragmentDirections.actionNewDetailFragmentToNewSourceFragment(articles.url))
             }
         }
     }

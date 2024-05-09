@@ -90,6 +90,7 @@ class NewsFragment : BaseFragment<FragmentNewsBinding>(FragmentNewsBinding::infl
 
     override fun onResume() {
         super.onResume()
+        observeNewsList()
         binding.apply {
             searchView.setQuery(newsViewModel.currentQuery.value, false)
             searchView.queryHint = "Something search news"

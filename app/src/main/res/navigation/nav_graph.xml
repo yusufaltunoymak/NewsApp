@@ -31,5 +31,18 @@
         <argument
             android:name="articles"
             app:argType="com.example.newsapp.data.model.Article" />
+        <action
+            android:id="@+id/action_newDetailFragment_to_newSourceFragment"
+            app:destination="@id/newSourceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newSourceFragment"
+        android:name="com.example.newsapp.presentation.ui.NewSourceFragment"
+        android:label="fragment_new_source"
+        tools:layout="@layout/fragment_new_source" >
+        <argument
+            android:name="url"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
 </navigation>

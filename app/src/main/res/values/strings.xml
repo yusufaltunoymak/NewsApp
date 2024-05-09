@@ -5,4 +5,6 @@
     <string name="error_text">Haberler Yüklenirken Hata Oluştu</string>
     <string name="error_message_text">Error</string>
     <string name="retry_text">Retry</string>
+    <string name="url_text">URL</string>
+    <string name="source_text">Show More</string>
 </resources>
