@@ -5,6 +5,7 @@ import androidx.room.Room
 import com.example.newsapp.data.local.NewsDao
 import com.example.newsapp.data.local.NewsDatabase
 import com.example.newsapp.data.remote.NewsAPI
+import com.example.newsapp.data.repository.ConnectivityRepository
 import com.example.newsapp.data.repository.NewsRepositoryImpl
 import com.example.newsapp.domain.repository.NewsRepository
 import com.example.newsapp.util.Constants
@@ -67,5 +68,11 @@ object AppModule {
     @Provides
     fun provideNewsDao(database: NewsDatabase): NewsDao {
         return database.newsDao()
+    }
+
+    @Singleton
+    @Provides
+    fun provideConnectivityRepository(@ApplicationContext context : Context): ConnectivityRepository {
+        return ConnectivityRepository(context)
     }
 }

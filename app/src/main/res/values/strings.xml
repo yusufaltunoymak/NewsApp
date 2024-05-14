@@ -7,4 +7,6 @@
     <string name="retry_text">Retry</string>
     <string name="url_text">URL</string>
     <string name="source_text">Show More</string>
+    <string name="no_internet_connection_text">No Internet Connection</string>
+    <string name="something_search_news_text">Something Search News</string>
 </resources>
