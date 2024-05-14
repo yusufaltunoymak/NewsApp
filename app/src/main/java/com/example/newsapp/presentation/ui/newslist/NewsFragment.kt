@@ -25,7 +25,7 @@ class NewsFragment : BaseFragment<FragmentNewsBinding>(FragmentNewsBinding::infl
         super.onViewCreated(view, savedInstanceState)
         observeNewsList()
         initAdapter()
-        setupMostListenedRecycler()
+        setupNewsRecycler()
 
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -74,7 +74,7 @@ class NewsFragment : BaseFragment<FragmentNewsBinding>(FragmentNewsBinding::infl
         }
 
     }
-    private fun setupMostListenedRecycler() {
+    private fun setupNewsRecycler() {
         binding.newsRv.apply {
             binding.newsRv.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
             this.adapter = newsAdapter.withLoadStateFooter(footer = NewsListLoadStateAdapter {newsAdapter.retry()})

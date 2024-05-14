@@ -7,15 +7,36 @@
     android:layout_height="match_parent"
     tools:context=".presentation.ui.newsdetail.NewDetailFragment">
 
-    <ImageView
-        android:id="@+id/newsImage"
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="350dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/news_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/newsImage"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/news_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/saveImageView"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="12dp"
+            android:src="@drawable/favorite_selector"
+            android:layout_alignEnd="@id/newsImage"
+            />
+    </RelativeLayout>
+
+
 
     <TextView
         android:id="@+id/textViewTitle"
@@ -28,7 +49,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newsImage"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
         tools:ignore="HardcodedText"
         tools:text="Haber Başlığı: Lorem Ipsum is simply dummy text of the printing and typesetting industry. " />
 
@@ -119,7 +140,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textViewAuthor"
                 tools:ignore="HardcodedText" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
@@ -133,6 +153,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView3" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
