@@ -4,6 +4,6 @@ import com.example.newsapp.data.local.NewsEntity
 
 interface NewsItemClickListener {
 
-    fun onNewsItemClicked(article: NewsEntity)
+    fun onNewsItemClicked(newsEntity: NewsEntity)
 
 }

@@ -3,6 +3,7 @@ package com.example.newsapp.presentation.ui.newsdetail
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -50,21 +51,22 @@ class NewDetailFragment : BaseFragment<FragmentNewDetailBinding>(FragmentNewDeta
 
             }
 
-                val favoriteArticle = NewsEntity(
-                    author = articles.author,
-                    title = articles.title,
-                    content = articles.content,
-                    publishedAt = articles.publishedAt,
-                    urlToImage = articles.urlToImage,
-                    url = articles.url ?: "",
-                    description = articles.description,
-                    source = articles.source,
-                    newsId = articles.url!!
-                )
+            val favoriteArticle = NewsEntity(
+                author = articles.author,
+                title = articles.title,
+                content = articles.content,
+                publishedAt = articles.publishedAt,
+                urlToImage = articles.urlToImage,
+                url = articles.url ?: "",
+                description = articles.description,
+                source = articles.source,
+                newsId = articles.url!!
+            )
 
-            favoritesViewModel.isFavoriteNews(favoriteArticle).observe(viewLifecycleOwner) { isFav ->
-                saveImageView.isSelected = isFav
-            }
+            favoritesViewModel.isFavoriteNews(favoriteArticle)
+                .observe(viewLifecycleOwner) { isFav ->
+                    saveImageView.isSelected = isFav
+                }
 
             saveImageView.setOnClickListener {
                 viewLifecycleOwner.lifecycleScope.launch {
@@ -86,8 +88,10 @@ class NewDetailFragment : BaseFragment<FragmentNewDetailBinding>(FragmentNewDeta
                 )
             }
         }
+        binding.backIcon.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
-
         @RequiresApi(Build.VERSION_CODES.O)
         private fun formattedDate(date: String?): String {
             val dateTime = LocalDateTime.parse(date, DateTimeFormatter.ISO_DATE_TIME)
@@ -95,4 +99,4 @@ class NewDetailFragment : BaseFragment<FragmentNewDetailBinding>(FragmentNewDeta
             val formattedDate = dateTime.format(formatter)
             return formattedDate
         }
-}
+    }

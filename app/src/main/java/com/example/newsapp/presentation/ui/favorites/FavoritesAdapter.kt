@@ -13,7 +13,7 @@ import com.example.newsapp.databinding.ListRecyclerItemBinding
 import com.example.newsapp.util.cleanText
 import com.example.newsapp.util.downloadFromUrl
 
-class FavoritesAdapter() : ListAdapter<NewsEntity,FavoritesAdapter.ViewHolder>(FavoritesCallBack()) {
+class FavoritesAdapter(private val listener: NewsItemClickListener) : ListAdapter<NewsEntity,FavoritesAdapter.ViewHolder>(FavoritesCallBack()) {
 
     inner class ViewHolder(private val binding : ListRecyclerItemBinding, private val context : Context) : RecyclerView.ViewHolder(binding.root) {
 
@@ -30,6 +30,9 @@ class FavoritesAdapter() : ListAdapter<NewsEntity,FavoritesAdapter.ViewHolder>(F
                     }
                     newsHeaderText.text = newsEntity.title
                     newsContentText.text = cleanText(newsEntity.content)
+                    root.setOnClickListener {
+                        listener.onNewsItemClicked(newsEntity)
+                    }
                 }
             }
         }
