@@ -11,16 +11,16 @@ object SummaryData {
             modelName = "gemini-pro",
             apiKey = BuildConfig.GEMINI_API_KEY
         )
-        try {
+        return try {
 
             val response = withContext(Dispatchers.IO) {
                 generativeModel.generateContent(prompt)
             }
-            return SummaryResponse(
+            SummaryResponse(
                 summary = response.text ?: "error",
             )
         } catch (e: Exception) {
-            return SummaryResponse(
+            SummaryResponse(
                 summary = e.message ?: "error",
             )
 

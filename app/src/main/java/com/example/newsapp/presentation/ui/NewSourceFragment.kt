@@ -1,8 +1,6 @@
 package com.example.newsapp.presentation.ui
 
-import android.app.AlertDialog
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.webkit.WebViewClient
 import androidx.fragment.app.viewModels
@@ -12,7 +10,6 @@ import com.example.newsapp.base.BaseFragment
 import com.example.newsapp.databinding.BottomSheetLayoutBinding
 import com.example.newsapp.databinding.FragmentNewSourceBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 class NewSourceFragment : BaseFragment<FragmentNewSourceBinding>(FragmentNewSourceBinding::inflate) {
@@ -34,7 +31,8 @@ class NewSourceFragment : BaseFragment<FragmentNewSourceBinding>(FragmentNewSour
                 val summaryText = response.summary.removePrefix("SummaryResponse(summary = ").removeSuffix(")")
                 val bottomSheetDialog = BottomSheetDialog(requireContext())
                 val bottomSheetBinding = BottomSheetLayoutBinding.inflate(layoutInflater)
-                bottomSheetBinding.summaryTextView.text = summaryText
+                bottomSheetBinding.summaryHeaderTv.text = getString(R.string.summary_text)
+                bottomSheetBinding.summaryTvContent.text = summaryText
                 bottomSheetDialog.setContentView(bottomSheetBinding.root)
                 bottomSheetDialog.show()
             }
