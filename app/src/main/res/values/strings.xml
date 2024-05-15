@@ -9,4 +9,5 @@
     <string name="source_text">Show More</string>
     <string name="no_internet_connection_text">No Internet Connection</string>
     <string name="something_search_news_text">Something Search News</string>
+    <string name="prompt_text">bu linkteki kaynağı birkaç cümleyle özetler misin?</string>
 </resources>

@@ -1,3 +1,11 @@
+import java.io.FileInputStream
+import java.util.Properties
+
+fun getLocalProperty(propertyKey: String): String {
+    val properties = Properties()
+    properties.load(FileInputStream(rootProject.file("local.properties")))
+    return properties.getProperty(propertyKey) ?: ""
+}
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
@@ -18,11 +26,12 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
+        buildConfigField("String", "GEMINI_API_KEY", "\"${getLocalProperty("gemini_api_key")}\"")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 
     buildTypes {
@@ -92,6 +101,8 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-common-java8:2.6.1")
     implementation ("androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.1")
 
+    //Gemini
+    implementation("com.google.ai.client.generativeai:generativeai:0.1.2")
 
 
 

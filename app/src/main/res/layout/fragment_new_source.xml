@@ -40,8 +40,17 @@
         android:maxLines="1"
         android:ellipsize="end"
         app:layout_constraintBottom_toBottomOf="@+id/webViewToolbar"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/summarizeIv"
         app:layout_constraintStart_toEndOf="@+id/closeIv"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/summarizeIv"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/ic_summarize"
+        app:layout_constraintBottom_toTopOf="@+id/webView"
+        app:layout_constraintEnd_toEndOf="@+id/webViewToolbar"
         app:layout_constraintTop_toTopOf="parent" />
 
     <WebView
